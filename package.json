@@ -1,0 +1,12 @@
+{
+  "name": "daily-task-app",
+  "version": "1.0.0",
+  "description": "A **complete, production-ready** task management application with a clean, professional interface. Built with Node.js, Express, PostgreSQL, and Vanilla JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
