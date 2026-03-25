@@ -6,10 +6,10 @@
 // Dynamically set API URL based on current domain/IP
 // If loaded via file://, default to localhost:5000
 const getApiUrl = () => {
-  if (window.location.protocol === 'file:') {
-    return 'http://localhost:5000';
+  if (window.location.hostname === "localhost") {
+    return "http://localhost:10000"; // your local backend
   }
-  return `${window.location.protocol}//${window.location.hostname}:5000`;
+  return "https://daily-task-app-2.onrender.com"; // your live backend
 };
 
 const API_URL = getApiUrl();
@@ -184,16 +184,16 @@ function updateCategoryFilter() {
   const categories = [...new Set(allTasks
     .map(t => t.category)
     .filter(c => c && c.trim()))];
-  
+
   const currentValue = filterCategory.value;
   const options = filterCategory.querySelectorAll('option');
-  
+
   // Remove all options except the first one
   while (options.length > 1) {
     options[options.length - 1].remove();
     options = filterCategory.querySelectorAll('option');
   }
-  
+
   // Add new category options
   categories.forEach(category => {
     const option = document.createElement('option');
@@ -201,7 +201,7 @@ function updateCategoryFilter() {
     option.textContent = category;
     filterCategory.appendChild(option);
   });
-  
+
   // Restore previous selection if it still exists
   filterCategory.value = currentValue;
 }
@@ -212,7 +212,7 @@ function updateCategoryFilter() {
 async function loadTasks() {
   try {
     showSpinner(true);
-    
+
     // Build query string with filters
     const params = new URLSearchParams();
     if (currentSearchQuery) params.append('search', currentSearchQuery);
@@ -374,10 +374,10 @@ function editTask(id) {
   // Create modal overlay
   const modal = document.createElement('div');
   modal.className = 'modal';
-  
+
   const modalContent = document.createElement('div');
   modalContent.className = 'modal-content';
-  
+
   modalContent.innerHTML = `
     <div class="modal-header">
       <h2>Edit Task</h2>
@@ -426,7 +426,7 @@ function editTask(id) {
   // Event listeners
   document.getElementById('modalCancel').addEventListener('click', () => modal.remove());
   document.querySelector('.modal-close').addEventListener('click', () => modal.remove());
-  
+
   modal.addEventListener('click', (e) => {
     if (e.target === modal) modal.remove();
   });
@@ -503,7 +503,7 @@ function escapeHtml(text) {
  */
 function formatDate(dateString) {
   if (!dateString) return '';
-  
+
   const date = new Date(dateString);
   const today = new Date();
   const tomorrow = new Date(today);
@@ -724,11 +724,11 @@ class StarField {
     this.stars = [];
     this.mouseX = 0;
     this.mouseY = 0;
-    
+
     this.resizeCanvas();
     this.init();
     this.animate();
-    
+
     window.addEventListener('resize', () => this.resizeCanvas());
     document.addEventListener('mousemove', (e) => this.onMouseMove(e));
   }
@@ -741,7 +741,7 @@ class StarField {
   init() {
     this.stars = [];
     const starCount = 300;
-    
+
     for (let i = 0; i < starCount; i++) {
       this.stars.push({
         x: Math.random() * this.canvas.width,
@@ -769,7 +769,7 @@ class StarField {
     for (let star of this.stars) {
       // Move stars forward (towards camera)
       star.z -= star.vz;
-      
+
       // Reset stars that have passed the camera
       if (star.z <= 0) {
         star.z = 1000;
