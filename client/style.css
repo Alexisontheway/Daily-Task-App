@@ -5,12 +5,11 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: #000;
-  min-height: 100vh;
-  padding: 20px;
-  position: relative;
-  overflow-x: hidden;
+ body {
+  background: #000000;
+  color: #e2e2e2;
+  font-family: 'Inter', sans-serif;
+}
 }
 
 /* 3D Star Canvas Background */
@@ -43,7 +42,7 @@ body.dark-mode .container {
 
 /* Header */
 .header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d3dafb 0%, #10001f 100%);
   color: white;
   padding: 40px 20px;
   text-align: center;
