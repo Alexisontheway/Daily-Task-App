@@ -756,7 +756,7 @@ class StarField {
   }
 
   randomStarColor() {
-    const colors = ['#fff', '#dfefff', '#ffdfef', '#fbf8ff', '#a8d8ff'];
+    const colors = ['#EAFF00', '#222222', '#444444', '#EAFF00'];
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
@@ -790,8 +790,8 @@ class StarField {
   }
 
   draw() {
-    // Clear canvas with semi-transparent black for trail effect
-    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    // Clear canvas with pitch black
+    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     // Draw stars
