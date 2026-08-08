@@ -2,6 +2,18 @@
 
 A **complete, production-ready** task management application with a clean, professional interface. Built with Node.js, Express, PostgreSQL, and Vanilla JavaScript.
 
+<p align="center">
+  <a href="https://daily-task-app-2.onrender.com">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-daily--task--app--2.onrender.com-10B981?style=for-the-badge&labelColor=000000" alt="Live Demo" />
+  </a>
+</p>
+
+> **Note:** The demo runs on a free-tier Render instance and may take **~30s to wake** on first load.
+
+## 🖼️ Screenshot
+
+![Daily Task Checklist — add tasks, set priority & due date, live stats](assets/screenshot.png)
+
 **Live Demo Features:**
 - ✅ Add, edit, complete, and delete tasks
 - 📊 Real-time statistics tracking
@@ -372,8 +384,8 @@ git init
 git add .
 git commit -m "Initial commit: Daily Task Checklist App"
 
-# Replace YOUR_USERNAME
-git remote add origin https://github.com/YOUR_USERNAME/daily-task-app.git
+# Repo is already live — skip to pushing updates:
+git remote add origin https://github.com/Alexisontheway/Daily-Task-App.git
 
 git branch -M main
 git push -u origin main
@@ -732,6 +744,12 @@ This project demonstrates:
 3. **Add authentication** - User login/signup
 4. **Add due dates** - Task scheduling
 5. **Deploy to cloud** - Heroku, AWS, Azure, etc.
+
+---
+
+## ⚖️ An honest trade-off
+
+The frontend is deliberately **vanilla JavaScript** — no React, no build step, no virtual DOM. That keeps the bundle tiny and the code readable and deployable anywhere, but it means state is updated by hand: every task mutation re-renders the relevant DOM directly, which stays manageable at this app's scale but wouldn't be the right choice before the UI grew significantly. Similarly, "real-time" here means the UI reflects changes immediately *when you make them* and on refresh — the backend is a plain REST API on Node + PostgreSQL, not a WebSocket or SSE push, so there's no live cross-client sync without adding a channel layer. Those are deliberate complexity-for-simplicity trades: a task checklist doesn't need them, and keeping the app dependency-free makes the code a cleaner learning artifact.
 
 ---
 
